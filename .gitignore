@@ -1,3 +1,5 @@
 build*/
 *.pyc
 *.sw?
+
+compile_commands.json

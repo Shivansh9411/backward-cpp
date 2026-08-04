@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <backward/backward.hpp>
 #include <iostream>
 #include <sstream>
@@ -7,34 +8,18 @@ using namespace backward;
 
 class TracedException : public std::runtime_error {
 public:
-  TracedException() : std::runtime_error(_get_trace()) {}
+  TracedException() : std::runtime_error(_get_trace()) {
+    __builtin_trap() /* STUB: not implemented */;
+}
 
 private:
   std::string _get_trace() {
-    std::ostringstream ss;
-
-    StackTrace stackTrace;
-    TraceResolver resolver;
-    stackTrace.load_here();
-    resolver.load_stacktrace(stackTrace);
-
-    for (std::size_t i = 0; i < stackTrace.size(); ++i) {
-      const ResolvedTrace trace = resolver.resolve(stackTrace[i]);
-
-      ss << "#" << i << " at " << trace.object_function << "\n";
-    }
-
-    return ss.str();
-  }
+    __builtin_trap() /* STUB: not implemented */;
+}
 };
 
 void f(int i) {
-  if (i >= 42) {
-    throw TracedException();
-  } else {
-    std::cout << "i=" << i << "\n";
-    f(i + 1);
-  }
+    __builtin_trap() /* STUB: not implemented */;
 }
 
 int main() {
